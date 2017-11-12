@@ -60,3 +60,10 @@ fin[is.na(fin$Revenue) & fin$Industry == "Construction","Revenue"] <- med_rev_co
 med_exp_constr <- median(fin[fin$Industry=="Construction","Expenses"], na.rm=TRUE)
 med_exp_constr
 fin[is.na(fin$Expenses) & fin$Industry=="Construction" & is.na(fin$Profit),"Expenses"] <- med_exp_constr
+# Revenue - expense = Profit
+# Expenses = Revenue - Profit
+fin[is.na(fin$Profit),"Profit"] <- fin[is.na(fin$Profit), "Revenue"] - fin[is.na(fin$Profit), "Expenses"]
+fin[c(8,32),]
+fin[is.na(fin$Expenses),"Expenses"] <- fin[is.na(fin$Expenses),"Revenue"] - fin[is.na(fin$Expenses),"Profit"]
+fin[15,]
+
