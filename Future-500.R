@@ -78,5 +78,7 @@ d + geom_point() +
 #BoxPlot 
 f <- ggplot(data=fin, aes(x=Industry, y=Growth, colour=Industry))
 f + geom_boxplot(size=1) 
-
+#extra 
+f + geom_jitter() + 
+  geom_boxplot(size=1, alpha=0.5, outlier.color = NA) 
  
