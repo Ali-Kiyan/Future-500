@@ -66,4 +66,14 @@ fin[is.na(fin$Profit),"Profit"] <- fin[is.na(fin$Profit), "Revenue"] - fin[is.na
 fin[c(8,32),]
 fin[is.na(fin$Expenses),"Expenses"] <- fin[is.na(fin$Expenses),"Revenue"] - fin[is.na(fin$Expenses),"Profit"]
 fin[15,]
+library(ggplot2)
+#A scatterplot classified by industry showing revenue, expenses, profit
+p <- ggplot(data=fin)
+p + geom_point(aes(x=Revenue, y=Expenses, colour=Industry, size=Profit))
+#A scatterplot that include industry trends for the expenses
+d <- ggplot(data=fin, aes(x=Revenue, y=Expenses, colour=Industry))
+#14 warning 
+d + geom_point() +
+  geom_smooth(fill=NA, size=1.2)
 
+ 
