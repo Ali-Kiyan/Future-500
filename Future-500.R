@@ -30,4 +30,10 @@ med_empl_retail <- median(fin[fin$Industry=="Retail","Employees"], na.rm = TRUE)
 med_empl_retail
 #mean(fin[,"Employees"], na.rm = TRUE)
 fin[is.na(fin$Employees) & fin$Industry == "Retail", "Employees"] <- med_empl_retail
-fin[c(3),]
+fin[3,]
+med_empl_finserv <- median(fin[fin$Industry=="Financial Services","Employees"], na.rm = TRUE)
+med_empl_finserv
+fin[is.na(fin$Employees) & fin$Industry == "Financial Services", "Employees"] <- med_empl_finserv
+#check
+fin[330,]
+fin[!complete.cases(fin),]
