@@ -2,9 +2,12 @@
 fin <- read.csv("Future-500.csv", na.strings = c("") )
 fin[which(fin$Employees == 45),] 
 head(fin,24)
+#$sub and $gsub
+fin$Expenses <- gsub(" Dollars","",fin$Expenses)
+fin$Expenses <- gsub(",","",fin$Expenses)
+fin$Revenue <- gsub("\\$","",fin$Revenue)
 #getting na subset(rows) 
 fin[is.na(fin$Expenses),]
-a <- c(1,24,543,NA,76,45,NA)
 #all the rows that have empty value somewhere
 fin[!complete.cases(fin),]
 fin_backup <- fin
@@ -23,7 +26,7 @@ fin[c(82,265),]
 fin[!complete.cases(fin),]
 fin[fin$City == "San Francisco", "State"] <- "CA"
 fin[!complete.cases(fin),]
-#replacing missing data 
+#replacing missing data Median Imputation
 fin[!complete.cases(fin),]
 #more accurate because doesn't count outliars
 med_empl_retail <- median(fin[fin$Industry=="Retail","Employees"], na.rm = TRUE)
@@ -37,3 +40,8 @@ fin[is.na(fin$Employees) & fin$Industry == "Financial Services", "Employees"] <-
 #check
 fin[330,]
 fin[!complete.cases(fin),]
+#replacing missing data Median Imputation 2
+med_growth_constr <- median(fin[fin$Industry=="Construction","Growth"], na.rm = TRUE)
+fin[is.na(fin$Growth)& fin$Industry == "Construction",]
+fin[is.na(fin$Growth)& fin$Industry == "Construction","Growth"] <- med_growth_constr
+fin[8,]
