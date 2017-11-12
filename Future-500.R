@@ -2,10 +2,16 @@
 fin <- read.csv("Future-500.csv", na.strings = c("") )
 fin[which(fin$Employees == 45),] 
 head(fin,24)
+str(fin)
 #$sub and $gsub
 fin$Expenses <- gsub(" Dollars","",fin$Expenses)
 fin$Expenses <- gsub(",","",fin$Expenses)
 fin$Revenue <- gsub("\\$","",fin$Revenue)
+fin$Revenue <- gsub(",","",fin$Revenue)
+fin$Growth <- gsub("%","",fin$Growth)
+fin$Expenses <- as.numeric(fin$Expenses)
+fin$Revenue <- as.numeric(fin$Revenue)
+fin$Growth <- as.numeric(fin$Growth)
 #getting na subset(rows) 
 fin[is.na(fin$Expenses),]
 #all the rows that have empty value somewhere
