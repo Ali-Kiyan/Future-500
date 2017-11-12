@@ -75,5 +75,8 @@ d <- ggplot(data=fin, aes(x=Revenue, y=Expenses, colour=Industry))
 #14 warning 
 d + geom_point() +
   geom_smooth(fill=NA, size=1.2)
+#BoxPlot 
+f <- ggplot(data=fin, aes(x=Industry, y=Growth, colour=Industry))
+f + geom_boxplot(size=1) 
 
  
