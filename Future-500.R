@@ -3,6 +3,7 @@ fin <- read.csv("Future-500.csv", na.strings = c("") )
 fin[which(fin$Employees == 45),] 
 head(fin,24)
 str(fin)
+summary(fin)
 #$sub and $gsub
 fin$Expenses <- gsub(" Dollars","",fin$Expenses)
 fin$Expenses <- gsub(",","",fin$Expenses)
@@ -52,3 +53,10 @@ med_growth_constr
 fin[is.na(fin$Growth)& fin$Industry == "Construction",]
 fin[is.na(fin$Growth)& fin$Industry == "Construction","Growth"] <- med_growth_constr
 fin[8,]
+med_rev_const <- median(fin[fin$Industry=="Construction","Revenue"], na.rm = TRUE)
+med_rev_const
+fin[is.na(fin$Revenue) & fin$Industry == "Construction","Revenue"] <- med_rev_const
+#just calc profit where it cannot be drived from other attributes
+med_exp_constr <- median(fin[fin$Industry=="Construction","Expenses"], na.rm=TRUE)
+med_exp_constr
+fin[is.na(fin$Expenses) & fin$Industry=="Construction" & is.na(fin$Profit),"Expenses"] <- med_exp_constr
