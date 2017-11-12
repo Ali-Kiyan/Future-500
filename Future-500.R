@@ -19,6 +19,15 @@ fin
 #Replacing Missing Data: Factual Analysis
 fin[is.na(fin$State) & fin$City == "New York", "State"] <- "NY"
 #check:
-fin[c(11,377),]
+fin[c(82,265),]
 fin[!complete.cases(fin),]
-fin[is.na(fin$State) & fin$City == "San Francisco", "State"] <- "LA"
+fin[fin$City == "San Francisco", "State"] <- "CA"
+fin[!complete.cases(fin),]
+#replacing missing data 
+fin[!complete.cases(fin),]
+#more accurate because doesn't count outliars
+med_empl_retail <- median(fin[fin$Industry=="Retail","Employees"], na.rm = TRUE)
+med_empl_retail
+#mean(fin[,"Employees"], na.rm = TRUE)
+fin[is.na(fin$Employees) & fin$Industry == "Retail", "Employees"] <- med_empl_retail
+fin[c(3),]
