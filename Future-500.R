@@ -23,7 +23,7 @@ fin <- fin[!is.na(fin$Industry),]
 fin
 #reseting the dataframe index
 rownames(fin) <- 1:nrow(fin)
-#?
+#resent the dataframe index (the row names)
 rownames(fin) <- NULL
 fin
 #Replacing Missing Data: Factual Analysis
