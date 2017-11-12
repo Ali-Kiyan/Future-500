@@ -48,6 +48,7 @@ fin[330,]
 fin[!complete.cases(fin),]
 #replacing missing data Median Imputation 2
 med_growth_constr <- median(fin[fin$Industry=="Construction","Growth"], na.rm = TRUE)
+med_growth_constr
 fin[is.na(fin$Growth)& fin$Industry == "Construction",]
 fin[is.na(fin$Growth)& fin$Industry == "Construction","Growth"] <- med_growth_constr
 fin[8,]
